@@ -4,7 +4,7 @@ import NewCard from "./Components/NewCard";
 import { Card } from "@dhis2/ui-core/build/es/Card";
 
 import Dummy from "./profile.jpg";
-import "./home.css";
+import "./css/home.css";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { CssReset } from "@dhis2/ui-core/build/es/CssReset";
 import { InputField } from "@dhis2/ui-core/build/es/InputField";
@@ -75,7 +75,7 @@ const Home = () => {
           type="text"
         />
       </section>
-      <section className="Main">
+      <section className="Movies">
         <section className="Grid-Container">
           <h1>Movies</h1>
           <section className="row">
@@ -98,11 +98,29 @@ const Home = () => {
           </section>
         </section>
       </section>
+      <section className="Tv">
+        <section className="Grid-Container">
+          <h1>TV Series</h1>
+          <section className="row">
+            <section className="col-2-3">
+              <NewCard
+                image={Dummy}
+                title={"Joker TV series"}
+                alt="Dummy"
+                summary="Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam,"
+                onClick="CLICKED"
+              />
+            </section>
+          </section>
+        </section>
+      </section>
       <section className="Footer">
         <section className="Grid-Container">
           <section className="row">
             <section className="col-3-3">
-              <Card>
+              <Card className="grow">
                 <h1>FOOTER</h1>
               </Card>
             </section>
