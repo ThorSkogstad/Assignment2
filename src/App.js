@@ -88,6 +88,7 @@ const Home = () => {
                 adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam,"
                 onClick="CLICKED"
+                btnclass="btn"
               />
             </section>
             <section className="col-2-3">
@@ -111,6 +112,7 @@ const Home = () => {
                 adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam,"
                 onClick="CLICKED"
+                btnclass="btn"
               />
             </section>
           </section>

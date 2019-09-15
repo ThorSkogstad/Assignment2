@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "@dhis2/ui-core/build/es/Card";
 
 const NewCard = props => {
-  const { image, alt, title, summary, onClick } = props;
+  const { image, alt, title, summary, onClick, btnclass } = props;
   return (
     <Card className="card-container grow">
       <section className="card-image">
@@ -30,6 +30,9 @@ const NewCard = props => {
         <hr />
         <h1>{title}</h1>
         <h3>{summary}</h3>
+        <button className={btnclass}>
+          Read more<span>👀</span>
+        </button>
       </section>
     </Card>
   );

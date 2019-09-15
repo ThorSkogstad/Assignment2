@@ -109,6 +109,15 @@ hr {
   font-size: 1em;
 }
 
+.btn {
+  background: #1db954;
+  color: #333;
+  padding: 15px 20px;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 5px;
+}
+
 .row {
   width: 100%;
   padding: 20px 10px;
