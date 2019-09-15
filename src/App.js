@@ -96,23 +96,6 @@ const Home = () => {
               </Card>
             </section>
           </section>
-          <section className="row">
-            <section className="col-1-3">
-              <Card className="grow">
-                <h2>CONTENT</h2>
-              </Card>
-            </section>
-            <section className="col-1-3">
-              <Card className="grow">
-                <h2>CONTENT</h2>
-              </Card>
-            </section>
-            <section className="col-1-3">
-              <Card className="grow">
-                <h2>CONTENT</h2>
-              </Card>
-            </section>
-          </section>
         </section>
       </section>
       <section className="Footer">
