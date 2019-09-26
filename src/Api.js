@@ -12,24 +12,24 @@ const SPOTIFY_CLIENT_SECRET = "9633b92c784d4c68ab7b2e97f4320995";
 
 const REDIRECT_URI = "http://localhost:3000/callback";
 // authorize spotify access
-const AuthorizeRequest = () => {
-    window.location.href =
-        SPOTIFY_AUTHORIZE_URL +
-        "client_id=" +
-        SPOTIFY_CLIENT_ID +
-        "&" +
-        "redirect_uri=" +
-        REDIRECT_URI +
-        "&" +
-        "response_type=token" +
-        "&" +
-        "scope=" +
-        SCOPES +
-        "&" +
-        "state=104";
+const AuthorizeSpotifyRequest = () => {
+  return (window.location.href =
+    SPOTIFY_AUTHORIZE_URL +
+    "client_id=" +
+    SPOTIFY_CLIENT_ID +
+    "&" +
+    "redirect_uri=" +
+    REDIRECT_URI +
+    "&" +
+    "response_type=token" +
+    "&" +
+    "scope=" +
+    SCOPES +
+    "&" +
+    "state=104");
 };
 
-export default AuthorizeRequest;
+export default AuthorizeSpotifyRequest;
 /*
 async function getelements(){
     const response = away fetch(

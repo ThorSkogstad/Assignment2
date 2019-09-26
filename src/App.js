@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Login from "./Login";
 import NewCard from "./Components/NewCard";
-import { Card } from "@dhis2/ui-core/build/es/Card";
-
+import Callback from "./Callback";
 import Dummy from "./profile.jpg";
 import "./css/home.css";
+
+import { Card } from "@dhis2/ui-core/build/es/Card";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { CssReset } from "@dhis2/ui-core/build/es/CssReset";
 import { InputField } from "@dhis2/ui-core/build/es/InputField";
@@ -18,6 +20,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/callback" component={Callback} />
+          {/* need to check whether accesstoken exists and expiration date is more then an hour ago refresh, if not then call login page */}
           <Route component={Error} />
         </Switch>
       </Router>
@@ -25,32 +28,23 @@ const App = () => {
   );
 };
 
-const Callback = () => {
-  let URL = window.location.href;
-  let callback = URL.split("callback#")[1]; // get the second part of the url, the part returned from spotify dev
-  //console.log(callback);
-  //access_token
-  let access_token = callback.split("&")[0];
-  //console.log(access_token);
-  localStorage.setItem("acces_token", access_token.split("=")[1]);
-  //token_type
-  let token_type = callback.split("&")[1];
-  //console.log(token_type);
-  localStorage.setItem("token_type", token_type.split("=")[1]);
-  //expiration_time
-  let expires_after = callback.split("&")[2];
-  //console.log(expires_after);
-  localStorage.setItem("expires_after", expires_after.split("=")[1]);
-  //state for verification that the application sent the request for a access token
-  let state = callback.split("&")[3];
-  //console.log(state);
-  localStorage.setItem("State", state.split("=")[1]);
-
-  window.location.href = "/"; // returns back to home page
-};
-
 const Home = () => {
   const [filterlist, setFilterlist] = useState(""); //setting up useState hook
+
+  // get spotify data on motion pictures
+  (async () => {
+    const response = await axios.get("https://api.spotify.com/v1/search", {
+      params: {
+        q: "Original Motion Picture",
+        type: "album"
+      },
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("access_token")
+      }
+    });
+
+    console.log(response.data.albums.items);
+  })();
   return (
     <div>
       <section className="Header">
@@ -75,6 +69,7 @@ const Home = () => {
           type="text"
         />
       </section>
+
       <section className="Movies">
         <section className="Grid-Container">
           <h1>Movies</h1>
@@ -99,6 +94,7 @@ const Home = () => {
           </section>
         </section>
       </section>
+
       <section className="Tv">
         <section className="Grid-Container">
           <h1>TV Series</h1>
@@ -118,6 +114,7 @@ const Home = () => {
           </section>
         </section>
       </section>
+
       <section className="Footer">
         <section className="Grid-Container">
           <section className="row">
