@@ -77,22 +77,3 @@ export async function getSpotifyMotionPictureBySearch(query) {
 
   return data;
 }
-
-// get OMDB Data on movies
-export async function getOMDBMovieByTitleAndYear(title, year) {
-  const OMDB_API_KEY = "beb19d6aa39b645edfe1fce5d7facab9";
-  const response = await axios.get(
-    " https://api.themoviedb.org/3/search/movie?",
-    {
-      params: {
-        api_key: OMDB_API_KEY,
-        query: title,
-        primary_release_year: year
-      }
-    }
-  );
-
-  //console.log(response.data.results);
-  const data = response;
-  return data.data.results;
-}

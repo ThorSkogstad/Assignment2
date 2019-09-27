@@ -32,8 +32,8 @@ const MovieDetails = props => {
             <section className="Grid-Container">
               <section className="row">
                 <section className="col-3-3">
-                  <h1>Movie Soundtracks</h1>
                   <Card>
+                    <h1>{album.name + " "}Soundtrack list</h1>
                     {album.tracks.items.map(track => {
                       let trackName = track.name;
                       let artistNames = [];
