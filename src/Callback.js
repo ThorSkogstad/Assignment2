@@ -1,10 +1,12 @@
 import React from "react";
 import { CircularLoader } from "@dhis2/ui-core/build/es/CircularLoader";
+
 const Callback = () => {
   // use the information stored in Api.js for getting access to users spotify
   let URL = window.location.href;
   let callback = URL.split("callback#")[1]; // get the second part of the url, the part returned from spotify dev
   //console.log(callback);
+
   //access_token
   let access_token = callback.split("&")[0];
   //console.log(access_token);

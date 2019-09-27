@@ -1,3 +1,5 @@
+import React from "react";
+import axios from "axios";
 //OMDB API
 const OMDB_API_KEY = "beb19d6aa39b645edfe1fce5d7facab9";
 const OMDB_BASE_URL = "";
@@ -12,7 +14,7 @@ const SPOTIFY_CLIENT_SECRET = "9633b92c784d4c68ab7b2e97f4320995";
 
 const REDIRECT_URI = "http://localhost:3000/callback";
 // authorize spotify access
-const AuthorizeSpotifyRequest = () => {
+export const AuthorizeSpotifyAccess = () => {
   return (window.location.href =
     SPOTIFY_AUTHORIZE_URL +
     "client_id=" +
@@ -29,11 +31,68 @@ const AuthorizeSpotifyRequest = () => {
     "state=104");
 };
 
-export default AuthorizeSpotifyRequest;
-/*
-async function getelements(){
-    const response = away fetch(
+// get movie list from spotify
+export async function getSpotifyMotionPicture() {
+  const response = await axios.get("https://api.spotify.com/v1/search", {
+    params: {
+      q: "Original Motion Picture",
+      type: "album"
+    },
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("access_token")
+    }
+  });
+  //console.log(response.data.albums.items);
 
-    )
+  const data = response;
+
+  return data.data.albums.items;
 }
-*/
+
+export async function getSpotifyMotionPictureByID(id) {
+  const response = await axios.get("https://api.spotify.com/v1/albums/" + id, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("access_token")
+    }
+  });
+  // console.log(response.data);
+
+  const data = response.data;
+
+  return data;
+}
+
+export async function getSpotifyMotionPictureBySearch(query) {
+  const response = await axios.get("https://api.spotify.com/v1/search", {
+    params: {
+      q: query
+    },
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("access_token")
+    }
+  });
+  //console.log(response.data);
+
+  const data = response.data;
+
+  return data;
+}
+
+// get OMDB Data on movies
+export async function getOMDBMovieByTitleAndYear(title, year) {
+  const OMDB_API_KEY = "beb19d6aa39b645edfe1fce5d7facab9";
+  const response = await axios.get(
+    " https://api.themoviedb.org/3/search/movie?",
+    {
+      params: {
+        api_key: OMDB_API_KEY,
+        query: title,
+        primary_release_year: year
+      }
+    }
+  );
+
+  //console.log(response.data.results);
+  const data = response;
+  return data.data.results;
+}

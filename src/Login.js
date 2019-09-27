@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
+import logo from "./logo.png";
 import "./css/App.css";
 import { Button } from "@dhis2/ui-core/build/cjs/Button";
-import AccessSpotifyAPI from "./Api.js";
+import * as api from "./Api.js";
 
 const Login = () => {
   return (
@@ -13,8 +13,12 @@ const Login = () => {
             */}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Velkommen til FiMu</p>
-        <Button primary onClick={AccessSpotifyAPI}>
+        <p>Welcome to FiMu</p>
+        <p>
+          To make use of this application you need to grant access to your
+          spotify account, You can remove access later on your spotify profile
+        </p>
+        <Button primary onClick={api.AuthorizeSpotifyAccess}>
           <span role="img" aria-label="music-emoji">
             🤟
           </span>
