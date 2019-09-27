@@ -69,12 +69,6 @@ const MovieDetails = props => {
               </section>
             </section>
           </section>
-          <section className="details-info">
-            <section className="row">
-              <section className="col-2-3">content</section>
-              <section className="col-1-3">content</section>
-            </section>
-          </section>
         </div>
       ) : (
         <CircularLoader />
